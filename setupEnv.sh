@@ -105,7 +105,7 @@ function install_deb {
         echo ">>> running: sudo apt-get install $DOWNLOAD_DIR/$pkg_name.deb" | tee -a $LOG_FILE
         sudo apt-get install $DOWNLOAD_DIR/$pkg_name.deb | tee -a $LOG_FILE
         if [ $? -eq 0 ]; then
-            echo "Verifying install was successful: $pkg_name" | tee -a $LOG_FILE
+            echo "Verifying install was successful: $verify_cmd" | tee -a $LOG_FILE
             eval $verify_cmd 2>&1 | tee -a $LOG_FILE
             echo "Cleaning up $pkg_name binary..." | tee -a $LOG_FILE
             sudo rm -f $DOWNLOAD_DIR/$pkg_name 2>&1 | tee -a $LOG_FILE
@@ -152,7 +152,7 @@ function install_kubectl {
         echo ">>> running: sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl" | tee -a $LOG_FILE
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl | tee -a $LOG_FILE
         if [ $? -eq 0 ]; then
-            echo "Verifying install was successful: $pkg_name" | tee -a $LOG_FILE
+            echo "Verifying install was successful: $verify_cmd" | tee -a $LOG_FILE
             eval $verify_cmd 2>&1 | tee -a $LOG_FILE
             echo "Cleaning up $pkg_name binary..." | tee -a $LOG_FILE
             sudo rm -f $DOWNLOAD_DIR/$pkg_name 2>&1 | tee -a $LOG_FILE
